@@ -15,12 +15,12 @@ pipeline {
           url: git_repo
       }
     }
-    stage("deploy"){ 
+    stage("deploy") { 
       steps { 
         echo 'Deploying the application!' 
         
         withAWS(region:"${region}", credentials:"${AWS_CREDENTIALS}") {
-            s3Upload(bucket:"${bucket}", path:'', includePathPattern:'**/*', workingDir:'', excludePathPattern:'**/*.svg,**/*.jpg')
+            s3Upload(bucket:"${bucket}", path:'', includePathPattern:'**/*', workingDir:'', excludePathPattern:'**/*.txt')
         }
       }
     }
